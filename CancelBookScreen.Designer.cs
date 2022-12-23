@@ -117,7 +117,7 @@ namespace room_booking_system
             this.cancelButton.TabIndex = 19;
             this.cancelButton.Text = "Cancel Booking";
             this.cancelButton.UseVisualStyleBackColor = false;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_ClickAsync);
             // 
             // CancelBookScreen
             // 

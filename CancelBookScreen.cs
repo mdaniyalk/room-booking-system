@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace room_booking_system
 {
@@ -11,7 +12,7 @@ namespace room_booking_system
             InitializeComponent();
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private async Task cancelButton_ClickAsync(object sender, EventArgs e)
         {
             if (checkBoxAgree.CheckState == CheckState.Unchecked)
             {
@@ -28,13 +29,8 @@ namespace room_booking_system
 
                     try
                     {
-                        SqlConnection connection = new SqlConnection(functions.connectionString);
-                        string query = @"DELETE FROM ReservationTable WHERE (ReservationID= '" + reservationId + "' AND IdNumberID= '" + IdNumberId + "')";
-                        SqlCommand command = new SqlCommand(query, connection);
-                        connection.Open();
-                        command.ExecuteNonQuery();
+                        int resp = await functions.cancelBooking(reservationId.ToString(), IdNumberId.ToString());
                         new PopupMessage("Reservation Cancellation Success!").ShowDialog();
-                        connection.Close();
                     }
                     catch(Exception ex)
                     {

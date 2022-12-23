@@ -14,45 +14,25 @@ namespace room_booking_system
         }
 
 
-        private void validateButton_Click(object sender, EventArgs e)
+        private async void validateButton_Click(object sender, EventArgs e)
         {
             if (textBoxBookId.Text != "")
             {
-                int reservationID = int.Parse(textBoxBookId.Text);
-                int reservationNum = 0;
+                int bookId = int.Parse(textBoxBookId.Text);
+                
                 FunctionsClass functions = new FunctionsClass();
-
-                try
+                
+                int resp = await functions.validateBooking(bookId.ToString());
+                if (resp == 1)
                 {
-                    SqlConnection connection = new SqlConnection(functions.connectionString);
-                    connection.Open();
-                    string query1 = @"SELECT ReservationID FROM ReservationTable WHERE ReservationID LIKE '" + reservationID + "'";
-                    try
-                    {
-                        using (SqlCommand command1 = new SqlCommand(query1, connection))
-                        {
-                            using (SqlDataReader reader = command1.ExecuteReader())
-                            {
-                                reader.Read();
-                                reservationNum = reader.GetInt32(0);
-                                reader.Close();
-                            }
-                        }
-                        if (reservationNum != 0)
-                        {
-                            new PopupMessage("Reservation Validated Successfully!").ShowDialog();
-                        }
-                        connection.Close();
-                    }
-                    catch
-                    {
-                        new PopupMessage("Reservation is invalid!").ShowDialog();
-                    }
+                    new PopupMessage("Reservation Validated Successfully!").ShowDialog();
                 }
-                catch (Exception ex)
+                else
                 {
-                    new PopupMessage("Validation Error!" + ex).ShowDialog();
+                    new PopupMessage("Validation Error!").ShowDialog();
                 }
+                
+                
             }
             else
             {
@@ -73,10 +53,10 @@ namespace room_booking_system
                 string[] time = {"00", "01", "02"};
                 for (int i = 0; i< 3; i++)
                 {
-                    int cond = await functions.checkRoomTaken(date, roomName, time[i];
+                    int cond = await functions.checkRoomTaken(date, roomName, time[i]);
                     if (cond == 1)
                     {
-                        functions.rescheduleRoom(reservationID, date, roomName, time[i]);
+                        await functions.rescheduleBooking(reservationID.ToString(), date, roomName, time[i]);
                         new PopupMessage("Reschedule success!").ShowDialog();
                     }
                     else if (cond == 0 && i == 2) 

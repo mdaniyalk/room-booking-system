@@ -66,24 +66,8 @@ namespace room_booking_system
                 {
                     try
                     {
-                        SqlConnection connection = new SqlConnection(functions.connectionString);
-                        string query = "INSERT INTO ReservationTable (Name, PassportID, room, Date, Ticketime, Ticke_purpose, noPerson) VALUES ('" + name + "','" + idNumber + "','" + room + "','" + date + "','" + time + "','" + _purpose + "','" + numPerson + "')";
-                        SqlCommand command = new SqlCommand(query, connection);
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        int reservationNum;
-                        string query2 = "SELECT MAX(ReservationID) FROM ReservationTable";
-                        using (SqlCommand command2 = new SqlCommand(query2, connection))
-                        {
-                            using (SqlDataReader reader = command2.ExecuteReader())
-                            {
-                                reader.Read();
-                                reservationNum = reader.GetInt32(0);
-                                reader.Close();
-                            }
-                        }
-                        new PopupMessage("Reservation made successfully! Your Reservation Number is " + reservationNum).ShowDialog();
-                        connection.Close();
+                        string[] resp = await functions.newBooking(name, idNumber.ToString(), room, date, time, _purpose, numPerson);
+                        new PopupMessage("Reservation made successfully! Your Reservation Number is " + resp[1]).ShowDialog();
                     }
                     catch (Exception ex)
                     {

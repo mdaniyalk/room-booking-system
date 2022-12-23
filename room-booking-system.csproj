@@ -93,6 +93,7 @@
     <Compile Include="CancelBookScreen.Designer.cs">
       <DependentUpon>CancelBookScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Booking.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="FunctionsClass.cs" />
     <Compile Include="LoginScreen.cs">

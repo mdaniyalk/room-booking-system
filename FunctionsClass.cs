@@ -7,6 +7,8 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 //using Newtonsoft.Json;
 
 
@@ -71,6 +73,154 @@ namespace room_booking_system
             else
             { return 1; }
             
+        }
+
+        public async Task<string[]> newBooking(string name, string idNumber, string room, string date, string time, string purpose, string numPerson)
+        {
+            var client = new HttpClient();
+            string _00 = "0";
+            string _01 = "0";
+            string _02 = "0";
+            if (time == "00")
+            {
+                _00 = "1"; 
+            }
+            else if (time == "01")
+            {
+                _01 = "1";
+            }
+            else if (time == "02")
+            {
+                _02 = "2";
+            }
+            else
+            {
+                string[] ret = { "0", "error" };
+                return ret;
+            }
+
+            var data = new Dictionary<string, string>
+            {
+                {"name", name},
+                {"idNumber", idNumber},
+                {"room", room},
+                {"date", date},
+                {"_00", _00},
+                {"_01", _01},
+                {"_02", _02},
+                {"purpose", purpose},
+                {"numPerson", numPerson},
+            };
+
+            var result = await client.PostAsync(apiUrl+"/RuangBooking", new FormUrlEncodedContent(data));
+
+            var content = await result.Content.ReadAsStringAsync();
+            //Console.WriteLine(content);
+            result.EnsureSuccessStatusCode();
+
+            if (result.IsSuccessStatusCode)
+            {
+                var res = await client.GetStringAsync(apiUrl + "/RuangBooking/"+ new FormUrlEncodedContent(data));
+
+                Booking book = JsonSerializer.Deserialize<Booking>(res);
+                string bookId = book.bookId;
+                string[] ret = { "1", bookId};
+                return ret;
+            }
+            else
+            {
+                string[] ret = { "0", "Error" }; 
+                return ret;
+            }
+        }
+
+        public async Task<int> rescheduleBooking(string bookId, string date, string room, string time)
+        {
+            var client = new HttpClient();
+            string _00 = "0";
+            string _01 = "0";
+            string _02 = "0";
+            if (time == "00")
+            {
+                _00 = "1";
+            }
+            else if (time == "01")
+            {
+                _01 = "1";
+            }
+            else if (time == "02")
+            {
+                _02 = "2";
+            }
+            else
+            {
+                return 0;
+            }
+
+            var data = new Dictionary<string, string>
+            {
+                {"room", room},
+                {"date", date},
+                {"_00", _00},
+                {"_01", _01},
+                {"_02", _02},
+                
+            };
+
+            var result = await client.PutAsync(apiUrl + "/RuangBooking", new FormUrlEncodedContent(data));
+
+            var content = await result.Content.ReadAsStringAsync();
+            //Console.WriteLine(content);
+            result.EnsureSuccessStatusCode();
+
+            if (result.IsSuccessStatusCode)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> cancelBooking(string bookId, string idNumber)
+        {
+            var client = new HttpClient();
+
+            var result = await client.DeleteAsync(apiUrl + "/RuangBooking/bookId=" + bookId + "&idNumber=" +idNumber);
+
+            var content = await result.Content.ReadAsStringAsync();
+            //Console.WriteLine(content);
+            result.EnsureSuccessStatusCode();
+
+            if (result.IsSuccessStatusCode)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public async Task<int> validateBooking(string bookId)
+        {
+            var client = new HttpClient();
+
+            var result = await client.GetAsync(apiUrl + "/RuangBooking/bookId=" + bookId);
+
+            var content = await result.Content.ReadAsStringAsync();
+            //Console.WriteLine(content);
+            result.EnsureSuccessStatusCode();
+
+            if (result.IsSuccessStatusCode)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public async Task<int> checkUserTakenAsync(string uName)
