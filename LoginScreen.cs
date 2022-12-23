@@ -60,7 +60,7 @@ namespace RoomBookingSystem
 
         private void txtNewUsr_Click(object sender, EventArgs e)
         {
-            new MainMenuScreen().Show();
+            new NewUserScreen().Show();
             this.Hide();
         }
     }
