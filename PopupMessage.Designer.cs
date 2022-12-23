@@ -1,5 +1,5 @@
 ﻿
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     partial class PopupMessage
     {

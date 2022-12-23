@@ -2,8 +2,10 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Globalization;
+using System.Threading;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     public partial class AddBookScreen : Form
     {
@@ -38,6 +40,7 @@ namespace room_booking_system
                 string name = textBoxName.Text;
                 int idNumber = int.Parse(textBoxIDNumber.Text);
                 string room = roomList.Text;
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("nl-NL");
                 string date = datePicker.Value.ToShortDateString();
                 string time = "";
                 string _purpose = purpose.Text;

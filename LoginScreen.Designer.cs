@@ -1,6 +1,6 @@
 ﻿using FontAwesome.Sharp;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     partial class LoginScreen
     {
@@ -83,7 +83,7 @@ namespace room_booking_system
             this.txtPassword.Margin = new System.Windows.Forms.Padding(6);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(270, 37);
+            this.txtPassword.Size = new System.Drawing.Size(270, 45);
             this.txtPassword.TabIndex = 5;
             // 
             // txtUsername
@@ -92,7 +92,7 @@ namespace room_booking_system
             this.txtUsername.Location = new System.Drawing.Point(300, 188);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(6);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(270, 37);
+            this.txtUsername.Size = new System.Drawing.Size(270, 45);
             this.txtUsername.TabIndex = 4;
             // 
             // label3
@@ -186,7 +186,7 @@ namespace room_booking_system
             this.iconButton1.TabIndex = 6;
             this.iconButton1.Text = "LOG IN";
             this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_ClickAsync);
             // 
             // pictureBox1
             // 

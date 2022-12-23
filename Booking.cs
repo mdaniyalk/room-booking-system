@@ -1,11 +1,11 @@
-﻿using room_booking_system;
+﻿using RoomBookingSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     internal class Booking
     {

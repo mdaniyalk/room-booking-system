@@ -3,8 +3,10 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Threading;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     public partial class RescheduleBookScreen : Form
     {
@@ -40,10 +42,11 @@ namespace room_booking_system
             }
         }
 
-        private async Task updateButton_ClickAsync(object sender, EventArgs e)
+        private async void updateButton_ClickAsync(object sender, EventArgs e)
         {
             int reservationID = int.Parse(textBoxBookId.Text);
             string roomName = newRoom.Text;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("nl-NL");
             string date = datePicker.Value.ToShortDateString();
 
             FunctionsClass functions = new FunctionsClass();

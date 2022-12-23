@@ -1,5 +1,5 @@
 ﻿
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     partial class MainMenuScreen
     {
@@ -204,7 +204,7 @@ namespace room_booking_system
             // Logo
             // 
             this.Logo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Logo.Image = global::room_booking_system.Properties.Resources.logo_dteti;
+            this.Logo.Image = global::RoomBookingSystem.Properties.Resources.logo_dteti;
             this.Logo.Location = new System.Drawing.Point(100, 23);
             this.Logo.Margin = new System.Windows.Forms.Padding(6);
             this.Logo.Name = "Logo";
@@ -278,7 +278,7 @@ namespace room_booking_system
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::room_booking_system.Properties.Resources.logo_dteti;
+            this.pictureBox1.Image = global::RoomBookingSystem.Properties.Resources.logo_dteti;
             this.pictureBox1.Location = new System.Drawing.Point(493, 295);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox1.Name = "pictureBox1";

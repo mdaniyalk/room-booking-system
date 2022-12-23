@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     public partial class NewUserScreen : Form
     {
@@ -11,7 +12,7 @@ namespace room_booking_system
             InitializeComponent();
         }
 
-        private void registerButton_Click(object sender, EventArgs e)
+        private async void registerButton_ClickAsync(object sender, EventArgs e)
         {
             string name = textBoxName.Text;
             string idNum = textBoxIdNumber.Text;
@@ -21,8 +22,8 @@ namespace room_booking_system
             if (name != "" && idNum != "" && uname != "" && password != "")
             {
                 FunctionsClass functions = new FunctionsClass();
-
-                if (functions.checkUserTakenAsync(uname) == 0)
+                int response = await functions.checkUserTakenAsync(uname);
+                if (response == 0)
                 {
                     new PopupMessage("Sorry, The username is already taken!").ShowDialog();
                 }
@@ -30,13 +31,8 @@ namespace room_booking_system
                 {
                     try
                     {
-                        SqlConnection connection = new SqlConnection(functions.connectionString);
-                        string query = "INSERT INTO UserTable (Name, idNumber, Username, Password) VALUES ('" + name + "','" + idNum + "','" + uname + "','" + password + "')";
-                        SqlCommand command = new SqlCommand(query, connection);
-                        connection.Open();
-                        command.ExecuteNonQuery();
+                        int resp = await functions.newUser(name, idNum, uname, password);
                         new PopupMessage("Account registered successfully! Please use username and password to login..").ShowDialog();
-                        connection.Close();
                         Profile profile = new Profile();
                         profile.name = name;
                         profile.idNumber = idNum;
@@ -49,7 +45,7 @@ namespace room_booking_system
                     finally
                     {
                         textBoxName.Text = "";
-                        textBoxid.Text = "";
+                        textBoxIdNumber.Text = "";
                         textBoxUsername.Text = "";
                         textBoxPassword.Text = "";
                     }

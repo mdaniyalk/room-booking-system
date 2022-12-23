@@ -1,5 +1,5 @@
 ﻿
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     partial class ViewBookScreen
     {
@@ -29,11 +29,9 @@ namespace room_booking_system
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewBookScreen));
             this.textBoxIdRoom = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
-            this.refreshAllButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxIdRoom
@@ -75,37 +73,17 @@ namespace room_booking_system
             this.searchButton.TabIndex = 20;
             this.searchButton.Text = "Search Bookings";
             this.searchButton.UseVisualStyleBackColor = false;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
-            // 
-            // refreshAllButton
-            // 
-            this.refreshAllButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.refreshAllButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.refreshAllButton.FlatAppearance.BorderSize = 0;
-            this.refreshAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.refreshAllButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshAllButton.ForeColor = System.Drawing.Color.White;
-            this.refreshAllButton.Location = new System.Drawing.Point(40, 254);
-            this.refreshAllButton.Margin = new System.Windows.Forms.Padding(6);
-            this.refreshAllButton.Name = "refreshAllButton";
-            this.refreshAllButton.Size = new System.Drawing.Size(1120, 67);
-            this.refreshAllButton.TabIndex = 22;
-            this.refreshAllButton.Text = "View All Bookings";
-            this.refreshAllButton.UseVisualStyleBackColor = false;
-            this.refreshAllButton.Click += new System.EventHandler(this.refreshAllButton_Click);
+            this.searchButton.Click += new System.EventHandler(this.searchButton_ClickAsync);
             // 
             // ViewBookScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1202, 391);
-            this.Controls.Add(this.refreshAllButton);
+            this.ClientSize = new System.Drawing.Size(1202, 238);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.textBoxIdRoom);
             this.Controls.Add(this.label2);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "ViewBookScreen";
             this.Text = "View Bookings";
@@ -119,7 +97,6 @@ namespace room_booking_system
         private System.Windows.Forms.TextBox textBoxIdRoom;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Button refreshAllButton;
         private Guna.UI2.WinForms.Guna2DataGridView dataGridView1;
     }
 }

@@ -1,5 +1,5 @@
 ﻿
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     partial class NewUserScreen
     {
@@ -29,10 +29,7 @@ namespace room_booking_system
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewUserScreen));
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtBckToLog = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -46,45 +43,26 @@ namespace room_booking_system
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(484, 73);
+            this.label1.Location = new System.Drawing.Point(454, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(256, 48);
+            this.label1.Size = new System.Drawing.Size(600, 90);
             this.label1.TabIndex = 1;
             this.label1.Text = "Registration";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 958);
-            this.panel2.Margin = new System.Windows.Forms.Padding(6);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(300, 0);
-            this.panel2.TabIndex = 35;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1486, 958);
-            this.panel3.Margin = new System.Windows.Forms.Padding(6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(300, 0);
-            this.panel3.TabIndex = 36;
-            // 
             // panel4
             // 
-            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel4.AutoSize = true;
             this.panel4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.txtBckToLog);
@@ -97,22 +75,21 @@ namespace room_booking_system
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Location = new System.Drawing.Point(300, 92);
-            this.panel4.Margin = new System.Windows.Forms.Padding(6);
+            this.panel4.Location = new System.Drawing.Point(210, 68);
+            this.panel4.Margin = new System.Windows.Forms.Padding(20);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1186, 772);
+            this.panel4.Size = new System.Drawing.Size(1336, 772);
             this.panel4.TabIndex = 37;
             // 
             // txtBckToLog
             // 
             this.txtBckToLog.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtBckToLog.AutoSize = true;
             this.txtBckToLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBckToLog.ForeColor = System.Drawing.Color.Black;
-            this.txtBckToLog.Location = new System.Drawing.Point(481, 653);
+            this.txtBckToLog.Location = new System.Drawing.Point(340, 653);
             this.txtBckToLog.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.txtBckToLog.Name = "txtBckToLog";
-            this.txtBckToLog.Size = new System.Drawing.Size(259, 30);
+            this.txtBckToLog.Size = new System.Drawing.Size(600, 50);
             this.txtBckToLog.TabIndex = 44;
             this.txtBckToLog.Text = "<- BACK TO LOGIN";
             this.txtBckToLog.Click += new System.EventHandler(this.txtBckToLog_Click);
@@ -121,12 +98,12 @@ namespace room_booking_system
             // 
             this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(348, 414);
+            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(600, 414);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(804, 32);
+            this.textBoxPassword.Size = new System.Drawing.Size(686, 50);
             this.textBoxPassword.TabIndex = 43;
             // 
             // label4
@@ -137,7 +114,7 @@ namespace room_booking_system
             this.label4.Location = new System.Drawing.Point(30, 416);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(142, 30);
+            this.label4.Size = new System.Drawing.Size(142, 50);
             this.label4.TabIndex = 42;
             this.label4.Text = "Password:";
             // 
@@ -145,11 +122,11 @@ namespace room_booking_system
             // 
             this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsername.Location = new System.Drawing.Point(346, 344);
+            this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsername.Location = new System.Drawing.Point(600, 344);
             this.textBoxUsername.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(804, 32);
+            this.textBoxUsername.Size = new System.Drawing.Size(686, 50);
             this.textBoxUsername.TabIndex = 41;
             // 
             // registerButton
@@ -164,32 +141,34 @@ namespace room_booking_system
             this.registerButton.Location = new System.Drawing.Point(35, 507);
             this.registerButton.Margin = new System.Windows.Forms.Padding(6);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(1120, 70);
+            this.registerButton.Size = new System.Drawing.Size(1255, 90);
             this.registerButton.TabIndex = 40;
             this.registerButton.Text = "Register Account";
             this.registerButton.UseVisualStyleBackColor = false;
-            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
+            this.registerButton.Click += new System.EventHandler(this.registerButton_ClickAsync);
             // 
             // textBoxIdNumber
             // 
             this.textBoxIdNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxIdNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxIdNumber.Location = new System.Drawing.Point(346, 266);
+            this.textBoxIdNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxIdNumber.Location = new System.Drawing.Point(600, 264);
             this.textBoxIdNumber.Margin = new System.Windows.Forms.Padding(6);
             this.textBoxIdNumber.Name = "textBoxIdNumber";
-            this.textBoxIdNumber.Size = new System.Drawing.Size(804, 32);
+            this.textBoxIdNumber.Size = new System.Drawing.Size(686, 40);
             this.textBoxIdNumber.TabIndex = 39;
             // 
             // textBoxName
             // 
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(346, 192);
+            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxName.Location = new System.Drawing.Point(600, 192);
             this.textBoxName.Margin = new System.Windows.Forms.Padding(6);
+            this.textBoxName.MaximumSize = new System.Drawing.Size(1300, 32);
+            this.textBoxName.MinimumSize = new System.Drawing.Size(500, 32);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(804, 32);
+            this.textBoxName.Size = new System.Drawing.Size(690, 40);
             this.textBoxName.TabIndex = 38;
             // 
             // label3
@@ -200,7 +179,7 @@ namespace room_booking_system
             this.label3.Location = new System.Drawing.Point(28, 346);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(255, 30);
+            this.label3.Size = new System.Drawing.Size(255, 40);
             this.label3.TabIndex = 37;
             this.label3.Text = "Username/UGM ID:";
             // 
@@ -212,7 +191,7 @@ namespace room_booking_system
             this.label2.Location = new System.Drawing.Point(28, 266);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 30);
+            this.label2.Size = new System.Drawing.Size(154, 40);
             this.label2.TabIndex = 36;
             this.label2.Text = "ID Number:";
             // 
@@ -224,14 +203,17 @@ namespace room_booking_system
             this.label8.Location = new System.Drawing.Point(28, 192);
             this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 30);
+            this.label8.Size = new System.Drawing.Size(94, 40);
             this.label8.TabIndex = 35;
             this.label8.Text = "Name:";
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(6);
             this.panel1.Name = "panel1";
@@ -244,25 +226,21 @@ namespace room_booking_system
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
             this.ClientSize = new System.Drawing.Size(1786, 958);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "NewUserScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register Account";
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.Button registerButton;

@@ -9,69 +9,65 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using System.Text;
+
 //using Newtonsoft.Json;
 
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
-    class FunctionsClass
+    public class FunctionsClass
     {
-        public string apiUrl = "http://localhost:7260";
+        public string apiUrl = "https://ruangapi20221223140142.azurewebsites.net";
         
-        public async Task<string> listRoom(string id)
-        {
-            var client = new HttpClient();
-
-            var result = await client.GetStringAsync(apiUrl + "/Ruang/ListKetersediaan");
-
-            Room roomList = JsonSerializer.Deserialize<Room>(result);
-            return roomList.room;
-
-        }
-
         public async Task<int> checkRoomTaken(string date, string roomName, string time)
         {
             var client = new HttpClient();
 
-            var result = await client.GetStringAsync(apiUrl + "/Ruang/Ketersediaan/tanggal=" + date + "&ruang=" + roomName);
+            var result = await client.GetStringAsync(apiUrl + "/RuangBooking?date=" + date + "&room=" + roomName);
 
-            Room roomStatus = JsonSerializer.Deserialize<Room>(result);
+            var userdata = JsonSerializer.Deserialize<List<Room>>(result);
 
-            if (time == "00")
+            foreach (var roomStatus in userdata)
             {
-                if (roomStatus._00 == "1")
+                if (time == "00")
                 {
-                    return 0;
+                    if (roomStatus._00 == "1")
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                else
+                else if (time == "01")
                 {
-                    return 1;
+                    if (roomStatus._01 == "1")
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
+                else if (time == "02")
+                {
+                    if (roomStatus._02 == "1")
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+                
             }
-            else if (time == "01")
-            {
-                if (roomStatus._01 == "1")
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-            else if (time == "02")
-            {
-                if (roomStatus._02 == "1")
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-            else
-            { return 1; }
+
+            return 1;
+
             
         }
 
@@ -91,7 +87,7 @@ namespace room_booking_system
             }
             else if (time == "02")
             {
-                _02 = "2";
+                _02 = "1";
             }
             else
             {
@@ -101,6 +97,7 @@ namespace room_booking_system
 
             var data = new Dictionary<string, string>
             {
+                {"bookId", "0"},
                 {"name", name},
                 {"idNumber", idNumber},
                 {"room", room},
@@ -112,18 +109,28 @@ namespace room_booking_system
                 {"numPerson", numPerson},
             };
 
-            var result = await client.PostAsync(apiUrl+"/RuangBooking", new FormUrlEncodedContent(data));
+            var jsonDictionary = JsonSerializer.Serialize(data);
+            var content = new StringContent(jsonDictionary, Encoding.UTF8, "application/json");
 
-            var content = await result.Content.ReadAsStringAsync();
+            var result = await client.PostAsync(apiUrl+"/RuangBooking", content);
+
+            //var content = await result.Content.ReadAsStringAsync();
             //Console.WriteLine(content);
             result.EnsureSuccessStatusCode();
 
             if (result.IsSuccessStatusCode)
             {
-                var res = await client.GetStringAsync(apiUrl + "/RuangBooking/"+ new FormUrlEncodedContent(data));
-
-                Booking book = JsonSerializer.Deserialize<Booking>(res);
-                string bookId = book.bookId;
+                var res = await client.GetStringAsync(apiUrl + "/RuangBooking?date="+date+"&room="+room);
+                var userdata = JsonSerializer.Deserialize<List<Booking>>(res);
+                string bookId = "";
+                foreach (var book in userdata)
+                {
+                    if (book.name == name && book.idNumber == name && book.purpose == purpose)
+                    {
+                        bookId = book.bookId;
+                    }
+                }
+                
                 string[] ret = { "1", bookId};
                 return ret;
             }
@@ -167,9 +174,12 @@ namespace room_booking_system
                 
             };
 
-            var result = await client.PutAsync(apiUrl + "/RuangBooking", new FormUrlEncodedContent(data));
+            var jsonDictionary = JsonSerializer.Serialize(data);
+            var content = new StringContent(jsonDictionary, Encoding.UTF8, "application/json");
+            
+            var result = await client.PutAsync(apiUrl + "/RuangBooking", content);
 
-            var content = await result.Content.ReadAsStringAsync();
+            //var content = await result.Content.ReadAsStringAsync();
             //Console.WriteLine(content);
             result.EnsureSuccessStatusCode();
 
@@ -187,7 +197,7 @@ namespace room_booking_system
         {
             var client = new HttpClient();
 
-            var result = await client.DeleteAsync(apiUrl + "/RuangBooking/bookId=" + bookId + "&idNumber=" +idNumber);
+            var result = await client.DeleteAsync(apiUrl + "/RuangBooking?bookId=" + bookId + "&idNumber=" +idNumber);
 
             var content = await result.Content.ReadAsStringAsync();
             //Console.WriteLine(content);
@@ -207,7 +217,7 @@ namespace room_booking_system
         {
             var client = new HttpClient();
 
-            var result = await client.GetAsync(apiUrl + "/RuangBooking/bookId=" + bookId);
+            var result = await client.GetAsync(apiUrl + "/RuangBooking?bookId=" + bookId);
 
             var content = await result.Content.ReadAsStringAsync();
             //Console.WriteLine(content);
@@ -223,22 +233,62 @@ namespace room_booking_system
             }
         }
 
+        public async Task viewBooking(string bookId)
+        {
+            var client = new HttpClient();
+            var result = await client.GetAsync(apiUrl + "/RuangBooking?bookId=" + bookId);
+
+            
+
+            //Console.WriteLine(content);
+            result.EnsureSuccessStatusCode();
+
+            if (result.IsSuccessStatusCode)
+            {
+                var content = await client.GetStringAsync(apiUrl + "/RuangBooking?bookId=" + bookId);
+                Booking book = JsonSerializer.Deserialize<Booking>(content);
+                string time = "";
+                if (book._00 == "1")
+                {
+                    time = "08:00-10:00";
+                } 
+                else if (book._01 == "1")
+                {
+                    time = "10:15-12:15";
+                }
+                else if (book._02 == "1")
+                {
+                    time = "13:00-15:00";
+                }
+
+                new PopupMessage("Booking ID: \t" + book.bookId + "\nName: \t" + book.name +
+                    "\nID Number: \t" + book.idNumber + "\nRoom: \t" + book.room + "\nDate: \t" + book.date +
+                    "\nTime: \t" + time + "\nPurpose: \t" + book.purpose + "\nNumber of Person: \t" + book.numPerson).ShowDialog();
+            }
+            else
+            {
+                new PopupMessage("Booking not found!").ShowDialog();
+            }
+        }
+
         public async Task<int> checkUserTakenAsync(string uName)
         {
             var client = new HttpClient();
 
-            var result = await client.GetAsync(apiUrl+"/Users/"+uName);
+            var result = await client.GetStringAsync(apiUrl+"/Users");
             //Console.WriteLine(result.StatusCode);
+            var userdata = JsonSerializer.Deserialize<List<UserProfile>>(result);
 
+            foreach (var data in userdata)
+            {
+                if (data.username == uName)
+                {
+                    return 0;
+                }
+            }
 
-            if (result.IsSuccessStatusCode)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
+            return 1;
+            
         }
 
         public async Task<int> newUser(string name, string idNum, string uName, string password)
@@ -247,16 +297,18 @@ namespace room_booking_system
             string email = uName + "@mail.ugm.ac.id";
             var data = new Dictionary<string, string>
             {
+                {"id", "0" },
                 {"username", uName},
                 {"password", password},
                 {"email", email},
                 {"fullname", name},
                 {"nim", idNum}
             };
+            var jsonDictionary = JsonSerializer.Serialize(data);
+            var content = new StringContent(jsonDictionary, Encoding.UTF8, "application/json");
+            var result = await client.PostAsync(apiUrl+"/Users", content);
 
-            var result = await client.PostAsync(apiUrl, new FormUrlEncodedContent(data));
-
-            var content = await result.Content.ReadAsStringAsync();
+            //var content = await result.Content.ReadAsStringAsync();
             //Console.WriteLine(content);
             result.EnsureSuccessStatusCode();
 
@@ -274,7 +326,7 @@ namespace room_booking_system
         {
             var client = new HttpClient();
 
-            var result = await client.GetAsync(apiUrl + "/auth/Login/username=" + uName +"&password=" + pass);
+            var result = await client.GetAsync(apiUrl + "/auth/Login?username=" + uName +"&password=" + pass);
             //Console.WriteLine(result.StatusCode);
 
 

@@ -3,16 +3,16 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     public partial class CancelBookScreen : Form
     {
         public CancelBookScreen()
         {
-            InitializeComponent();
+            InitializeComponentAsync();
         }
 
-        private async Task cancelButton_ClickAsync(object sender, EventArgs e)
+        private async void cancelButton_ClickAsync(object sender, EventArgs e)
         {
             if (checkBoxAgree.CheckState == CheckState.Unchecked)
             {

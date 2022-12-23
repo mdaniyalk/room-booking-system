@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     public partial class LoginScreen : Form
     {
@@ -10,7 +11,7 @@ namespace room_booking_system
             InitializeComponent();
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private async void iconButton1_ClickAsync(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
@@ -30,8 +31,8 @@ namespace room_booking_system
                 try
                 {
                     FunctionsClass functions = new FunctionsClass();
-
-                    if (functions.validateLogin(username, password) == 0)
+                    int response = await functions.validateLogin(username, password);
+                    if (response == 0)
                     {
                         new PopupMessage("Invalid Credentials!").ShowDialog();
                     }
@@ -59,7 +60,7 @@ namespace room_booking_system
 
         private void txtNewUsr_Click(object sender, EventArgs e)
         {
-            new NewUserScreen().Show();
+            new MainMenuScreen().Show();
             this.Hide();
         }
     }

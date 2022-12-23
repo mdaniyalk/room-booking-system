@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     public partial class PopupMessage : Form
     {

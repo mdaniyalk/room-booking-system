@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     public partial class MainMenuScreen : Form
     {

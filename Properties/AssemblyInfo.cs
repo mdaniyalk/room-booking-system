@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("room-booking-system")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("RoomBookingSystem")]
+[assembly: AssemblyDescription("Book a room")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("room-booking-system")]
+[assembly: AssemblyCompany("DTETI OOP Final 2022/23")]
+[assembly: AssemblyProduct("RoomBookingSystem")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

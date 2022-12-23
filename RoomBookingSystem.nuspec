@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>RoomBookingSystem</id>
+    <version>1.0.0.0</version>
+    <title>RoomBookingSystem</title>
+    <authors>muchammad.daniyal.kautsar</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    
+    <description>Book a room</description>
+    <releaseNotes>The summary of changes made in this release of the package .</releaseNotes>
+    <copyright>Copyright 2022</copyright>
+    
+  </metadata>
+</package>

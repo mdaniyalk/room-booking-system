@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     public class Room
     {
+        public int bookId { get; set; }
         public string name { get; set; }
         public string date { get; set; }
         public string room { get; set; }

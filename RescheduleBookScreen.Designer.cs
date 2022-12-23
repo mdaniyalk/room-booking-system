@@ -1,5 +1,5 @@
 ﻿
-namespace room_booking_system
+namespace RoomBookingSystem
 {
     partial class RescheduleBookScreen
     {
@@ -84,43 +84,9 @@ namespace room_booking_system
             this.newRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newRoom.FormattingEnabled = true;
             this.newRoom.IntegralHeight = false;
-            this.newRoom.Items.AddRange(new object[] {
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5",
-            "A6",
-            "B1",
-            "B2",
-            "B3",
-            "B4",
-            "B5",
-            "B6",
-            "C1",
-            "C2",
-            "C3",
-            "C4",
-            "C5",
-            "C6",
-            "D1",
-            "D2",
-            "D3",
-            "D4",
-            "D5",
-            "D6",
-            "E1",
-            "E2",
-            "E3",
-            "E4",
-            "E5",
-            "E6",
-            "F1",
-            "F2",
-            "F3",
-            "F4",
-            "F5",
-            "F6"});
+            this.newRoom.Items.AddRange(new object[] { "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
+                "Ruang Sidang Lt. 1", "Ruang Sidang Lt. 3", "TE2", "TE3", "TE4", "TE5",
+                "SGLC 1", "SGLC 2", "SGLC 3", "SGLC 4", "SGLC 5", "SGLC 6", "SGLC 7"});
             this.newRoom.Location = new System.Drawing.Point(356, 392);
             this.newRoom.Margin = new System.Windows.Forms.Padding(6);
             this.newRoom.Name = "newRoom";

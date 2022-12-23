@@ -1,5 +1,7 @@
 ﻿
-namespace room_booking_system
+using System.Threading.Tasks;
+
+namespace RoomBookingSystem
 {
     partial class CancelBookScreen
     {
@@ -27,7 +29,7 @@ namespace room_booking_system
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private async Task InitializeComponentAsync()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CancelBookScreen));
             this.textBoxBookId = new System.Windows.Forms.TextBox();
